@@ -9,6 +9,7 @@ function App() {
     .then((response)=>response.json())
     .then((news)=>{
       setArticles(news.articles);
+
       // console.log(articles)
     })
     .catch((err)=>{
