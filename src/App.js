@@ -4,6 +4,7 @@ import News from './Component/News';
 function App() {
   let [articles,setArticles] = useState([])
   let [category, setCategory] = useState("India")
+  // let [date,setDate] = useState()
   useEffect(()=>{
     fetch(`https://newsapi.org/v2/everything?q=${category}&from=2023-12-25&apiKey=3370af73c5c345fdb0ec9a05246510f0`)
     .then((response)=>response.json())
