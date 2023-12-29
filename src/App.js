@@ -4,19 +4,21 @@ import News from './Component/News';
 function App() {
   let [articles,setArticles] = useState([])
   let [category, setCategory] = useState("India")
-  // let [date,setDate] = useState()
+
+  const yesterday = new Date();
+  yesterday.setDate(yesterday.getDate() - 1);
+
+  const formattedYesterday = yesterday.toISOString().split('T')[0]; 
   useEffect(()=>{
-    fetch(`https://newsapi.org/v2/everything?q=${category}&from=2023-12-25&apiKey=3370af73c5c345fdb0ec9a05246510f0`)
+    fetch(`https://newsapi.org/v2/everything?q=${category}&from=${formattedYesterday}&apiKey=3370af73c5c345fdb0ec9a05246510f0`)
     .then((response)=>response.json())
     .then((news)=>{
       setArticles(news.articles);
-
-      // console.log(articles)
     })
     .catch((err)=>{
       console.log(err)
     })
-  },[category])
+  },[category,formattedYesterday])
   return (
     <div className="App">
       <header className='header'>
