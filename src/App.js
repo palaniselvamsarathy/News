@@ -9,6 +9,7 @@ function App() {
   yesterday.setDate(yesterday.getDate() - 1);
 
   const formattedYesterday = yesterday.toISOString().split('T')[0]; 
+
   useEffect(()=>{
     fetch(`https://newsapi.org/v2/everything?q=${category}&from=${formattedYesterday}&apiKey=3370af73c5c345fdb0ec9a05246510f0`)
     .then((response)=>response.json())
@@ -19,6 +20,7 @@ function App() {
       console.log(err)
     })
   },[category,formattedYesterday])
+
   return (
     <div className="App">
       <header className='header'>
@@ -35,6 +37,7 @@ function App() {
         }} placeholder='Search News'/>
 
       </header>
+      
       <section className='news-articles'>
         {
 
